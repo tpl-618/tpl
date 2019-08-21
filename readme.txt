@@ -70,8 +70,58 @@ GIT (Linux的缔造者、维护者、开发者)
 
     git commit -m   "当前提交的描述, 应该要具有意义, 便于以后别人或者自己回溯时查看"
 
-    设置当前仓库的使用者姓名和联系邮箱
-        git config user.name "Chloe"
-        git appleuser$ git config user.email "Chloe@foxmail.com"
+设置当前仓库的使用者姓名和联系邮箱 (只对当前仓库有效)
+    git config user.name "Chloe"
+    git config user.email "Chloe@foxmail.com"
+
+     设置全局所有仓库都适用的使用者姓名和联系邮箱
+        git config --global user.name "Chloe"
+        git config --global user.email "Chloe@foxmail.com"
+
+查看当前/全局仓库的使用者姓名
+    git config user.name
+    git config --global user.email
+
+查看提交日志（历史）
+    git log  (提交作者、联系方式、时间、注释)
+
+筛选最近一次提交的记录
+    git log -1 (-n 最近n条记录)
+
+筛选指定用户的提交（对作者和联系方式两个字段进行筛选, 可模糊筛选）
+    git log --author
+
+筛选指定时间之后提交的记录
+    git log --after 16:10
+    git log --after "Wed Aug 21 16:10:00 2019 +0800"
+
+筛选指定时间之前提交的记录
+    git log --before "Wed Aug 21 16:10:00 2019 +0800"
+
+筛选指定时间段之间提交的记录
+    git log --after 16:00 --before 16:10
+
+多个筛选条件的组合
+    git log --after 16:00 --before 16:20 --author Chloe
+
+只查看提交信息的精简显示 (只包含提交id和注释－－因为记录回滚只和提交id有效，你可能要根据注释回到那个id)
+    git log --oneline
 
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+删除文件
+    方法一：
+        先从本机删除文件
+        然后加入暂存
+        最后提交
+
+    方法二：
+        git rm 要删除的文件（就会把文件从本机删掉，然后再加入暂存）
+        最后提交
+
+重命名文件
+    直接在本机重命名
+    git add 重命名前的文件名 重命名后的文件名
+    最后提交
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－git
