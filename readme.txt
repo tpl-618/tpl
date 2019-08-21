@@ -60,8 +60,18 @@ GIT (Linux的缔造者、维护者、开发者)
         git add -A
         git add --all
 
-    撤销暂存（可能没写完还需要继续编辑
-        git rm --cached
+    撤销暂存（可能没写完还需要继续编辑或者这个文件不希望被托管）
+        git rm --cached index.html hello.txt
 
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+注意：只有绿色的文件/目录，在commit提交时，才会被写入仓库
+    （不经过add就直接commit［还是红色就commit］没有意义）
+
+    git commit -m   "当前提交的描述, 应该要具有意义, 便于以后别人或者自己回溯时查看"
+
+    设置当前仓库的使用者姓名和联系邮箱
+        git config user.name "Chloe"
+        git appleuser$ git config user.email "Chloe@foxmail.com"
 
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
