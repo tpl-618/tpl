@@ -189,7 +189,22 @@ GIT (Linux的缔造者、维护者、开发者)
     查看当前所有的分支（绿色带 * 的是当前正在操作的分支）
         git branch      * master
 
-    
+    在当前分支上 复制/开辟/切出 一个新的分支（即对 当前分支/主分支 的镜像复制）
+        git branch fix_bugs
+        git branch new_feature
+
+    重命名分支
+        git branch -m new_feature new_feature_manager
+
+    删除分支
+        git branch -d new_feature_manager
+
+        注意：
+            1、正在检出操作的分支不能删除
+            2、有提交更新的分支，但尚未与主分支合并的分支不能删除
+
+    如果要在某个分支上进行操作，必须检出/切入该分支
+        git checkout fix_bugs
 
     修复
     新功能
