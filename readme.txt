@@ -207,6 +207,9 @@ GIT (Linux的缔造者、维护者、开发者)
     如果要在某个分支上进行操作，必须检出/切入该分支
         git checkout fix_bugs
 
+    可以在新建分支的同时又检出该分支（就是 git branch branch + git checkout branch ）
+        git checkout -b test
+
     合并分支（将fix_bugs合并到mater上）
         1、先检出要合并到的目标分支master
             git checkout master
