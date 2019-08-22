@@ -211,7 +211,7 @@ GIT (Linux的缔造者、维护者、开发者)
         1、先检出要合并到的目标分支master
             git checkout master
         2、向fix_bugs提出合并请求
-            git merge fix_bugs
+            git merge fix_bugs -m
 
 
     修复
