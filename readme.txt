@@ -201,10 +201,18 @@ GIT (Linux的缔造者、维护者、开发者)
 
         注意：
             1、正在检出操作的分支不能删除
-            2、有提交更新的分支，但尚未与主分支合并的分支不能删除
+            2、如果有提交更新的分支，但尚未与任何分支合并，也不能删除
+                （可以强制删除 git branch -D new_feature_manager）
 
     如果要在某个分支上进行操作，必须检出/切入该分支
         git checkout fix_bugs
+
+    合并分支（将fix_bugs合并到mater上）
+        1、先检出要合并到的目标分支master
+            git checkout master
+        2、向fix_bugs提出合并请求
+            git merge fix_bugs
+
 
     修复
     新功能
