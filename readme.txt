@@ -223,6 +223,77 @@ GIT (Linux的缔造者、维护者、开发者)
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 
 分支冲突的解决
-    在多个分支修改同一行人工
+    在多个分支修改同一行代码时，就会产生冲突，第一个分支在合并时不会报冲突，第二个分支再合并时就会报冲突！
+
+    当合并分支时，会报某个文件CONFLICT（你可以记住冲突的文件名），也可以通过 git status 查看冲突的情况！
+
+    编辑报冲突的文件
+    会发现如下的标注
+        <<<<<<< HEAD (Current Change)
+          "version": "1.2.2",
+        =======
+        <<<<<<< fix_bugs (Incoming Change)
+
+        <<<<<<< HEAD (Current Change)－－表示仓库中的最新代码
+        ======= －－ 表示仓库代码和当前代码的分割线
+        <<<<<<< fix_bugs (Incoming Change)－－表示你当前正在合并的分支
+
+    如何解决：
+        1、将所有 <<<<<<< ======= >>>>>>> 这三行都删掉
+        2、将冲突的代码改为你觉得正确的内容
+        3、重新add报冲突的文件
+            git add package.json
+        4、重新commit即可
+            git commit -m "resolve conflict about version with 1.2.1"
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+远程仓库
+    github
+    gitee   码云
+
+    1、先创建远程仓库
+        地址：https://github.com/...
+             https://github.com/yufeng2/wbs19052
+    2、在本地仓库注册/关联远程仓库地址
+        git remote add tpl https://github.com/tpl-618/tpl.git
+        git remote add wbs https://github.com/yufeng2/wbs19052 
+            (在本地用wbs19052别名，去引用远程仓库)
+        可以在本地仓库注册/关联任意多个远程仓库地址
+            git remote add project https://github.com/yufeng2/wbs19042
+    
+        查看本地仓库注册/关联了哪些远程仓库地址
+            git remote -v
+            git remote -verbose
+        重命名远程仓库在本地仓库中的注册/关联名
+            git remote rename project wbs19042  [原名称, 旧名称]
+
+        因为本地仓库已经注册/关联了远程仓库，所以不用访问远程仓库的页面，在本地就可以操作远程仓库（查看远程仓库的分支情况）
+            git remote show wbs19042
+
+        删除本地仓库中注册/关联的远程仓库
+            git remote remove wbs19042
+            git remote rm wbs19042
+
+        上传本地仓库分支到远程
+            git push wbs19052 fix_bugs
+        上传本地仓库分支到远程 (重命名为new_feature_admin)
+            git push wbs19052 new_feature:new_feature_admin
+
+        下载
+            /*************************************************************************************************/
+            注意：在下载远程分支到本地时，要先明确当前本地正在哪一个分支上，这个下载是将远程分支下载到当前分支全并！
+            /*************************************************************************************************/
+
+            将远程分支new_feature_admin下载合并到本地new_feature
+                git checkout new_feature
+                git pull wbs19052 new_feature_admin
+
+            如何将远程new_feature_admin另存到本地new_feature_admin (不是合并)
+                git pull wbs19052 new_feature_admin:new_feature_admin
+            这时你不要在意当前本地位于哪个分支，执行下载并重命名即可。
+            
+    ##### ??????        
+    :wq －－ write quit
 
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
